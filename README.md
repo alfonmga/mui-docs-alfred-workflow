@@ -6,6 +6,8 @@
 
 > [Alfred 4](https://www.alfredapp.com) workflow to search through the [Material-UI](https://material-ui-next.com/) documentation.
 
+![worflow demo](demo.png)
+
 ## Install
 
 [Download the workflow from the latest release page](https://github.com/alfonmga/mui-docs-alfred-workflow/releases/latest) and install it by double-clicking it.
