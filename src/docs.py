@@ -11,6 +11,7 @@ from urllib import quote_plus
 from config import Config
 from workflow import Workflow3, ICON_INFO
 import json
+import re
 
 
 # log
@@ -125,13 +126,14 @@ def main(wf):
                 hierarchies.append(result["hierarchy"][key])
 
         title = " > ".join(hierarchies)
-        subtitle = wrap(result["_snippetResult"]
-                        ["content"]["value"], width=75)[0]
+        subtitle = result["_snippetResult"]["content"]["value"]
+        subtitle = re.sub(
+            "<.*?>|(\/){1}|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});", "", subtitle)
 
         wf.add_item(
             uid=result["objectID"],
             title=title,
-            subtitle=subtitle,
+            subtitle=wrap(subtitle, width=75)[0] + "...",
             arg=result["url"],
             valid=True,
             # largetext=result["content"],
