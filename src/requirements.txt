@@ -1,2 +1,0 @@
-Alfred-Workflow>=1.37.2
-requests>=2.22.0
