@@ -3,12 +3,9 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 
 	"github.com/algolia/algoliasearch-client-go/v3/algolia/search"
 	aw "github.com/deanishe/awgo"
-	"golang.org/x/text/cases"
-	"golang.org/x/text/language"
 )
 
 const (
@@ -88,18 +85,8 @@ func generateAlfredResultItemFromSearchResHit(hit SearchResultHit) *AlfredSearch
 		}
 		count++
 	}
-	title = fmt.Sprintf("%s [%s]", title, getProductNameFromSearchResHit(hit.Product))
 	return &AlfredSearchResultItem{
 		Title: title,
 		URL:   hit.URL,
 	}
-}
-func getProductNameFromSearchResHit(s string) string {
-	// Uppercase first letter of each word
-	productName := cases.Title(language.Und, cases.NoLower).String(s)
-	// Remove dashes
-	productName = strings.Replace(productName, "-", " ", -1)
-	// Replace "Ui" with "UI"
-	productName = strings.Replace(productName, "Ui", "UI", -1)
-	return productName
 }
